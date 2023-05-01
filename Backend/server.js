@@ -3,4 +3,33 @@ const moment = require("moment-timezone");
 
 const app = express();
 
-console.log("Server is running at port 3000");
+// Middleware to parse incoming request bodies
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// GET route to return the list of time zones
+app.get("/timezones", (req, res) => {
+  const timeZones = moment.tz.names();
+  res.send({ timeZones });
+});
+
+// POST route to handle time zone conversion requests
+app.post("/convert", (req, res) => {
+  // Get the current time in the user's local time zone
+  const currentTime = moment();
+  console.log("Test");
+  // Get the time zone selected by the user from the request body
+  const { timeZone } = req.body;
+  // Convert the current time to the selected time zone
+  const convertedTime = currentTime.tz(timeZone).format("h:mm:ss A");
+  // Print the received time zone to the console
+  console.log(`Received time zone: ${timeZone}`);
+  // Send the converted time back to the client
+  res.send({ convertedTime });
+});
+
+// Start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
