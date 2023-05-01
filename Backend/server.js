@@ -1,11 +1,15 @@
 const express = require("express");
 const moment = require("moment-timezone");
+const cors = require("cors");
 
 const app = express();
 
 // Middleware to parse incoming request bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Enable CORS for all routes
+app.use(cors());
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

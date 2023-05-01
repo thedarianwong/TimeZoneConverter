@@ -5,12 +5,20 @@ body {
   margin: 0;
 }
 
+p {
+  font-size: 20px;
+}
+
 .app_title {
   margin-top: 40px;
 }
 
 .app {
   margin-top: 20px;
+}
+
+#current_time {
+  margin-top: 40px;
 }
 
 .main_container {
@@ -55,6 +63,12 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #3e8e41;
+}
+
+#converted_time {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: xx-large;
 }
 
 @media (min-width: 768px) {
