@@ -38,6 +38,7 @@ select {
   border-radius: 4px;
   width: 100%;
   max-width: 200px;
+  font-size: 20px;
 }
 
 input[type="submit"] {
