@@ -13,6 +13,17 @@ app.get("/timezones", (req, res) => {
   res.send({ timeZones });
 });
 
+// GET route to handle current time request
+app.get("/current-time", (req, res) => {
+  // Get the current time in the server's local time zone
+  const currentTime = moment();
+
+  // Send the current time back to the client
+  res.send({
+    currentTime: currentTime.format("dddd, MMMM Do YYYY, h:mm:ss a"),
+  });
+});
+
 // POST route to handle time zone conversion requests
 app.post("/convert", (req, res) => {
   // Get the current time in the user's local time zone
@@ -21,7 +32,9 @@ app.post("/convert", (req, res) => {
   // Get the time zone selected by the user from the request body
   const { timeZone } = req.body;
   // Convert the current time to the selected time zone
-  const convertedTime = currentTime.tz(timeZone).format("h:mm:ss A");
+  const convertedTime = currentTime
+    .tz(timeZone)
+    .format("dddd, MMMM Do YYYY, h:mm:ss a");
   // Print the received time zone to the console
   console.log(`Received time zone: ${timeZone}`);
   // Send the converted time back to the client
