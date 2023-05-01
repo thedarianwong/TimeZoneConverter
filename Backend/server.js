@@ -7,6 +7,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 // GET route to return the list of time zones
 app.get("/timezones", (req, res) => {
   const timeZones = moment.tz.names();
