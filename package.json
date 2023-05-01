@@ -1,0 +1,19 @@
+{
+  "name": "timezoneconverter",
+  "version": "1.0.0",
+  "description": "Converting current time to the time zone you requested",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment-timezone": "^0.5.43"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
